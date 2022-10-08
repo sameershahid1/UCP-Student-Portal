@@ -1,93 +1,85 @@
 /*Section-1*/
-.Header__S1
-{
+.Header__S1 {
     display: flex;
     justify-content: space-between;
-    padding:0.7rem 2rem;
+    padding: 0.5rem 2rem;
     background-color: rgb(255, 255, 255);
 }
 
 /*Section-1 Logo*/
-.Header__S1__Logo
-{
+.Header__S1__Logo {
     display: flex;
     align-items: center;
-    gap:1.2rem;
+    gap: 1.2rem;
 }
 
-.Header__S1__Logo>span
-{
-    font-size:1.13rem;
+.Header__S1__Logo>span {
+    font-size: 1.13rem;
 }
 
 
-.Header__S1__Logo>figure>img
-{
-    width:50px;
+.Header__S1__Logo>figure>img {
+    width: 50px;
 }
 
 
 /*Section-1 USER*/
-.Header__S1__USER 
-{
+.Header__S1__USER {
     display: flex;
     align-items: center;
-    gap:1rem;    
+    gap: 8px;
 }
 
-.Header__S1__USER>div
-{
+.Header__S1__USER>div {
     display: flex;
     align-items: center;
-    gap:10px;
-    border-radius:15px;
-    padding:8px 1.2rem;
-    box-shadow:0 0 15px 1px rgba(0, 0, 0, 0.1);
+    gap: 10px;
+    border-radius: 25px;
+    padding: 11px 1.5rem;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
 }
 
-.Header__S1__USER>div>:nth-child(2)
-{
-   font-size:13px;
-   color: rgba(221, 50, 50, 0.726);
+.Header__S1__USER>div span {
+    color: rgba(128, 128, 128, 0.582);
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.Header__S1__USER>div>:nth-child(2) {
+    font-size: 13px;
+    color: rgba(221, 50, 50, 0.726);
 }
 
 
-.Header__S1__USER>figure>img
-{
-    width:30px;
-    border-radius:50%;
+.Header__S1__USER>figure>img {
+    width: 25px;
+    height: 30px;
+    border-radius: 50%;
 }
 
 /*Section-2*/
-.Header__S2
-{
-   display: flex;
-   justify-content: space-between;
-   padding:1rem 2rem;
-   background-color: rgb(24, 24, 88);
+.Header__S2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: rgb(22, 22, 110);
 }
 
 .Header__S2__nav-1,
 .Header__S2__nav-1>ul,
 .Header__S2__nav-2,
-.Header__S2__nav-2>ul
-{
+.Header__S2__nav-2>ul {
     display: flex;
 }
 
-.Header__S2__nav-1>ul
-{
-    gap:2.1rem;
+.Header__S2__nav-1>ul {
+    gap: 2.3rem;
 }
 
-.Header__S2__nav-1 li
-{
-    font-size:1rem;
+.Header__S2__nav-1 li {
+    font-size: 14px;
 }
 
-.Header__S2__nav-2>ul 
-{
-    gap:1rem;
+.Header__S2__nav-2>ul {
+    gap: 1rem;
 }
-
-
