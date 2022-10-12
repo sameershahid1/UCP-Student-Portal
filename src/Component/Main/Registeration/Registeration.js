@@ -112,7 +112,7 @@ const Filter=()=>
     }
     
     
-    //This is Funciton is used to Add the Course in the Selective Courses
+//This is Funciton is used to Add the Course in the Selective Courses
 const Adding=(Selected={})=>
 {
   if(Object.keys(Selected).length!==0)
@@ -136,6 +136,7 @@ const Adding=(Selected={})=>
   setAdd(!Add);
 };
 
+
 //This function Allow to Delete selective courses from the Selective Courses
 const Allowing=(Delete)=>{
   if(Delete)
@@ -150,7 +151,7 @@ const Allowing=(Delete)=>{
 const Deleter=()=>
 {
   
-  /*Removing the Course from the Selected List*/
+/*Removing the Course from the Selected List*/
   const Selected=SelectedList.filter((section)=>{
       if(section.CourseCode!==DeletedCourse.CourseCode&&section.CourseTitle!==DeletedCourse.CourseTitle)
       {
@@ -159,7 +160,7 @@ const Deleter=()=>
      });
     setSelectedList(Selected.map(x=>x));
   
-  /*Finding the Course of the Deleted Section from the Data*/
+/*Finding the Course of the Deleted Section from the Data*/
   const COU=Data.find((course)=>{
    if(course.CourseCode===DeletedCourse.CourseCode&&course.CourseTitle===DeletedCourse.CourseTitle)
    {
@@ -167,7 +168,7 @@ const Deleter=()=>
    }
   });
   
-  /*Finding the Deleted Section from the Course*/
+/*Finding the Deleted Section from the Course*/
   const Section=COU.Sections.find((section)=>
   {
    if(section.Section===DeletedCourse.SelectedSection.Section)
@@ -176,7 +177,7 @@ const Deleter=()=>
    }
   });
   
-  /*Decrementing the Current Capacity*/
+/*Decrementing the Current Capacity*/
   Section.CurrentCapacity-=1;
   if(Section.Status==="Close")
   {
@@ -316,7 +317,7 @@ return (
          <div>
           {
             AllList.length>0&&AllList.map((course)=>(
-           <ul key={course.id} className='Course-Container__Courses'>
+            course.Add===true&&<ul key={course.id} className='Course-Container__Courses'>
               <li>{course.Semester}</li>
               <li>{course.CourseCode}</li>
               <li>{course.CourseTitle}</li>
@@ -325,14 +326,22 @@ return (
               <li>
                 <button className='btn-add btn' 
                   onClick={()=>{
-                  setCourse(course);
-                  Adding();
+                  if(SelectedList.length<5)
+                  {
+                     setCourse(course);
+                     Adding();
+                  }
+                  else
+                  {
+                    setAdd(true);
+                  }
                   }}
                 >+Add</button>
               </li>
-           </ul>))
+            </ul>))
           }
          </div>
+
       </section>
 
   </div>

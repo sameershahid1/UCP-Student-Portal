@@ -119,7 +119,7 @@ return (
          </div>
 
       </section>
-      <section className='Timing-Container'>
+      <section className='TimingTable-Container'>
          
       </section>
     </div>
