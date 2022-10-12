@@ -18,9 +18,7 @@
 .Course-Container__Courses,
 .Headings
 {
-
     padding: 1rem 0;
-    margin: 0 10px;
 }
 
 /*Selected Courses*/
@@ -58,9 +56,9 @@
 
 .Headings
 {
-   font-weight:bold;
+    font-weight:bold;
    font-size:15px;
-   box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.15);
+   box-shadow: 0 7px 7px 1px rgba(0, 0, 0, 0.07);
    margin-bottom:5px;
    border-radius:5px;
 }
@@ -70,11 +68,12 @@
 {
     flex:1;
     margin-left:2rem;
-
 }
 
 .Course-Container__Courses
 {
+    cursor: pointer;
+    margin:0 10px;
     font-size:13px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.45);
     background-color: rgba(236, 236, 236, 0.671);
@@ -82,6 +81,14 @@
     margin-top:10px;
     margin-bottom:10px;
 }
+.Course-Container__Courses:hover
+{
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+    margin-top:20px;
+    margin-bottom:20px;
+    transition: 0.6s ease-in-out all;
+}
+
 
 .btn-delete
 {
@@ -120,11 +127,11 @@
 /*Section-container*/
 .Section-container
 {
-   position: absolute;
-   top:20rem;
-   left:3rem;
+    position:fixed;
+   top:12vh;
+   left:1.7vw;
    z-index:100;
-   width:50vw;
+   width:47vw;
    background-color: white;
    border-radius:7px;
 }
@@ -160,7 +167,7 @@
 .Section-container>:nth-child(3)
 {
   overflow-y: scroll;
-  max-height:50vh;
+  height:45vh;
 }
 
 .Section-container table
@@ -202,3 +209,103 @@
 {
     background-color: #B4B7C2;
 }
+
+/*Checking for course Deletion*/
+.asking-container
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius:7px;
+    position: fixed;
+    top: 40vh;
+    left:35vw;
+    width:30vw;
+    z-index:100;
+}
+
+.asking-container>h3
+{    
+    margin:1rem 0 0.5rem 0;
+    font-weight: 500;
+}
+
+.btn-asking
+{
+    display:flex;
+    gap:1rem;
+    padding:1rem 1rem;
+}
+
+.btn-asking>button
+{
+    border-radius:13px;
+    width:5rem;
+}
+
+
+/*Filter*/
+.Filter
+{
+    display: flex;
+    gap:2vw;
+}
+
+.Filter>div
+{
+
+    display: flex;
+    align-items:center;
+    gap:7px;
+}
+
+.Filter__Select
+{
+    font-size:1.2rem;
+    font-weight:bold;    
+}
+
+.Filter__Select>select
+{
+    outline:none;
+    border:1px solid rgb(123, 123, 133);
+    border-radius:5px;
+    width:5rem;
+    padding:5px;
+    font-size:14px;
+    text-align: center;
+}
+
+
+.l1
+{
+    font-size:1rem;
+}
+
+
+.Filter__Search-Course>input
+{
+    width:12vw;
+    padding:10px 0 10px 12px;
+    border-radius:20px;
+    outline: none;
+    font-size:14px;
+}
+
+
+
+
+
+.btn-filter
+{
+    width:5.4vw;
+    font-size:1rem;
+}
+
+.btn-filter:hover
+{
+    background-color:rgb(16, 16, 93);
+}
+
+
