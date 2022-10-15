@@ -1,13 +1,19 @@
-import React,{useState,createContext} from 'react'
+//Importing React Module
+import React,{useState,createContext,useEffect} from 'react'
+//Style
 import "./Registeration.css";
+//Components
 import Sections from './Sections';
 import AskingForDeletion from './AskingForDeletion';
-import {Data} from '../../../Data/Data';
 import TimeTable from './TimeTable';
+//Importing Data
+import {Data} from '../../../Data/Data';
 
+//Context API
 export const Context=createContext([]);
 
 
+//Registeration form
 const Registeration = () => {
   //useState
   const [Add,setAdd]=useState(false);
@@ -19,6 +25,10 @@ const Registeration = () => {
   const [TempTimeTable,setTempTimeTable]=useState(false);
   const [ViewSection,setViewSection]=useState(false);
 
+  useEffect(()=>
+  {
+     
+  },[Add]);
 
   //List
   let Select=[];
@@ -54,8 +64,7 @@ const Filter=()=>
 {
   //Filtering the Courses
   let Temp=[];
-  
-//Filter through Search bar
+  //Filter through Search bar
   if(Search!=="")
   {
     Temp.push(AllList.find((course)=>
@@ -66,6 +75,7 @@ const Filter=()=>
       }
     }
     ));
+    
     if(Temp[0]===undefined)
     {
       setAllList([]);
@@ -108,17 +118,23 @@ const Filter=()=>
          {
            return course;
          }
-      });
-    }
+        });
+      }
+      setAllList(Temp.map(x=>x));
   }
   else
   {
-    Temp=Temp[0].Semester===Semester?
-    Temp[0].CourseType===CourseType?
-    Temp[0]:[]
-    :[];
+    if(Temp[0].Semester===Semester||Semester==="ALL")
+    {
+      if(Temp[0].CourseType===CourseType||CourseType==="ALL")
+      {
+        setAllList(Temp.map(x=>x));
+        return;
+      }
+    }
+    setAllList([]);
+    return;
   }  
-  setAllList(Temp.map(x=>x));
 }
     
     
@@ -308,7 +324,7 @@ return (
                             }}
                         className='btn-delete btn'>-Delete</button>
                    </li>
-                   <li><button onClick={()=>{setViewSection(true);}} className='btn'>View Section</button></li>
+                   <li><button onClick={()=>{setViewSection(true);}} className='btn btn-view'>View Section</button></li>
                </ul>
                ))
             }
@@ -327,7 +343,7 @@ return (
                   <div className='Filter__Select'>
                     <label htmlFor="CourseType" >Course-Type</label>
                     <select name="CourseType" id="CourseType" onChange={HandleCourseType}>
-                       <option className='l1' value="ALL">ALL</option>
+                       <option value="ALL">ALL</option>
                        <option value="CS">CS</option>
                        <option value="UNI">UNI</option>
                        <option value="CORE">CORE</option>
@@ -350,7 +366,7 @@ return (
                   </div>
 
                   <div className='Filter__Search-Course'>
-                    <input onChange={HandleSearch} type="text" placeholder='Enter the Course Code'/>
+                    <input onChange={HandleSearch} type="text" placeholder='Course Code'/>
                   </div>
                   <button onClick={Filter} className="btn btn-filter">Filter</button>
              </div>
@@ -358,7 +374,7 @@ return (
 
         {/*Heading of the All courses*/}
          <ul className='Headings'>
-            <li>Semester-No</li>
+            <li>Semester</li>
             <li>Course-Code</li>
             <li>Course-Title</li>
             <li>Preque-Course</li>

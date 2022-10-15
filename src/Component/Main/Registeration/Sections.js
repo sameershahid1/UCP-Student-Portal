@@ -69,14 +69,14 @@ const Submit=()=>{
 
 return (
     <div className='Section-selector'>
-      <section className={`Section-container ${ViewSection&&"Section-container--Position"}`}>
+      <section className='Section-container'>
 
          {/*Header List*/}
          <div>
             <h2>Add New Course</h2>
             <span onClick={()=>{ViewSection?setViewSection(false):Adding();}}><IoIosClose/></span>
          </div>
-           <span>Course Section</span>
+          <span>Course Section</span>
          <div>
 
          {/*Course Section List*/}
@@ -119,7 +119,7 @@ return (
            </div>
          }
       </section>
-        {!ViewSection&&<TimeTable Select={Select} isTemp={false}/>}
+        {<TimeTable Select={Select} isTemp={false}/>}
     </div>
   )
 }

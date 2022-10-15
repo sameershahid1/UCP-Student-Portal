@@ -1,10 +1,22 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Logo from '../../Assets/Images/Logo.svg';
-import UserPic from '../../Assets/Images/User.jpeg'
-import {GoChevronDown} from 'react-icons/go'
+import UserPic from '../../Assets/Images/User.jpeg';
+import {GoChevronDown} from 'react-icons/go';
+import {BsJustify} from 'react-icons/bs';
 import './Header.css';
 
 const Header = () => {
+useEffect(()=>{
+
+  setSideMenu(window.innerWidth<=981?true:false); 
+  window.addEventListener('resize',()=>{
+    setSideMenu(window.innerWidth<=981?true:false);
+  });
+
+},[]);
+const [SideMenu,setSideMenu]=useState(false);
+
+
   return (
     <div className='Header'>
      {/*Section-1 of the Header*/}
@@ -29,9 +41,9 @@ const Header = () => {
 
       {/*Section-2 of the Header*/}
       <section className="Header__S2">
-
+        {SideMenu&&<BsJustify className='SideMenu'/>}
         {/*Navbar on the left*/}
-         <nav className="Header__S2__nav-1">
+        {!SideMenu&&<nav className="Header__S2__nav-1">
              <ul>
                <li><a href="#">Home</a></li>
                <li><a href="#">Student-Service</a></li>
@@ -40,15 +52,14 @@ const Header = () => {
                <li><a href="#">Vaccination</a></li>
                <li><a href="#">Touch-Points</a></li>
              </ul>
-         </nav>
-
+        </nav>}
         {/*Navbar on the right*/}
-         <div className="Header__S2__nav-2">
+        {!SideMenu&&<div className="Header__S2__nav-2">
             <ul>
               <li><a href="#">Complain</a></li>
               <li><a href="#">Download</a></li>
             </ul>
-         </div>
+         </div>}
       </section>
     </div>
   )

@@ -83,3 +83,59 @@
 .Header__S2__nav-2>ul {
     gap: 1rem;
 }
+
+/*Responsive Design*/
+.SideMenu
+{
+    color: white;
+    font-size:3rem;
+}
+
+
+@media screen and (max-width:517px)
+{
+    .Header__S1
+    {
+        padding-left:11px;
+        padding-right:11px;
+    }
+    .Header__S1__Logo
+    {
+        gap:10px;
+    }
+
+    .Header__S1__Logo>figure>img 
+    {
+        width:40px;
+    }
+
+    .Header__S1__Logo>span
+    {
+        font-size:14px;
+    }
+
+    .Header__S1__USER>div
+    {
+        gap: 9px;
+        padding:9px 10px;
+    }
+
+    .Header__S1__USER>div span
+    {
+        font-size:10px;
+    }
+}
+
+
+@media screen and (max-width:981px)
+{
+      .Header__S2
+      {
+        padding:2px 5px;
+        justify-content:flex-end;
+      }
+}
+
+
+
+

@@ -73,7 +73,7 @@ SectionTime("MONDAY");
     <div className={`TimeTable-Container ${isTemp&&"TimeTable-Container--Position"}`}>
       <div>
         <h2>Student TimeTable</h2>
-        <span onClick={()=>{setTempTimeTable(false)}}><IoIosClose/></span>
+        {isTemp&&<span onClick={()=>{setTempTimeTable(false)}}><IoIosClose/></span>}
       </div>
       <div>
       <table>

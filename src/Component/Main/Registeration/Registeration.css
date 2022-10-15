@@ -44,7 +44,7 @@
 .Course-Container>:nth-child(1)
 {
     justify-content: space-between;
-    padding:1rem 2rem 1rem 2rem;
+    padding:1rem 2rem;
     border-bottom:1px solid rgba(0, 0, 0, 0.45);
 }
 
@@ -53,7 +53,6 @@
     font-size:1.5rem;
     font-weight:400;
 }
-
 
 .Headings
 {
@@ -74,12 +73,14 @@
 .Course-Container__Courses
 {
     font-size:13px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.45);
-    background-color: rgba(236, 236, 236, 0.671);
     margin-top:5px;
     margin-bottom:5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+    background-color: rgba(236, 236, 236, 0.671);
     transition: 0.7s ease-in-out all;
 }
+
+
 .Course-Container__Courses:hover
 {
     box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
@@ -88,6 +89,7 @@
     padding:15px 0;
     font-size:13px;
 }
+
 
 
 .btn-delete
@@ -106,11 +108,13 @@
 }
 
 
+
 .Course-Container>div:nth-of-type(2)
 {
     overflow-y: scroll;
     max-height:67%;
 }
+
 
 /*Registeration__BackgroundColor*/
 .Registeration__BackgroundColor
@@ -125,27 +129,24 @@
 
 
 /*Section-container*/
+.Section-selector
+{
+   position:fixed;
+   top:14vh;
+   left:1.7vw;
+   display: flex;
+   align-items: center;
+   gap:1rem;
+}
+
 .TimeTable-Container,
 .Section-container
 {
-    position:fixed;
-    z-index:100;
     width:47vw;
     background-color: white;
-    border-radius:7px;        
+    border-radius:7px;
 }
 
-.Section-container
-{
-   top:12vh;
-   left:1.7vw;
-}
-
-.Section-container--Position
-{
-    left:22vw;
-    top:20vh;
-}
 
 .Section-container>:nth-child(1)
 {
@@ -172,14 +173,15 @@
 .Section-container>:nth-child(2)
 {
     display: inline-block;
-    margin:1rem 3.8rem 0 3.8rem;
+    margin:1rem 0 0 1.3rem;
     font-size:1.4rem;
 }
 
 .Section-container>:nth-child(3)
 {
-  overflow-y: scroll;
-  height:45vh;
+    overflow-y: scroll;
+    height:40vh;
+    max-height:40vh;
 }
 
 .Section-container table
@@ -188,17 +190,15 @@
 }
 
 .Section-container table,
-.Section-container tr,
 .Section-container th,
 .Section-container td
 {
+    
     border:1px solid black;
     border-collapse: collapse;
     padding:1rem;
     text-align: center;
 }
-
-
 
 .Section-btn-container
 {
@@ -222,10 +222,10 @@
     background-color: #B4B7C2;
 }    
 
+
 /*Time Table*/
 .TimeTable-Container
 {
-    right:2vw;
     max-height:59vh;
     width:48vw;
     display: flex;
@@ -235,15 +235,18 @@
     padding-bottom:1rem;
 }
 
+
+
+
 .TimeTable-Container--Position
 {
+    position: fixed;
     top:20vh;
-    right:23vw;
+    left:20vw;
     width:60vw;
     max-height:66vh;
 }
 
-/* .TimeTable-Container--Position> */
 
 .TimeTable-Container>div:nth-child(1)
 {
@@ -253,6 +256,9 @@
     border-bottom:1px solid rgba(0, 0, 0, 0.411);
     padding:1rem 1.5rem;
 }
+
+
+
 .TimeTable-Container h2
 {
     font-size:1.8rem;
@@ -276,7 +282,7 @@
 .TimeTable-Container__day,
 .TimeTable-Container th
 {
-    background-color: rgba(219, 219, 236, 0.637);    
+    background-color: rgba(219, 219, 236, 0.637);
 }
 
 
@@ -286,12 +292,17 @@
     font-size:10px;
 }
 
+
 .TimeTable-Container th:nth-of-type(1),
 .TimeTable-Container__day
 {
     font-size:13px;
     padding:13px;
 }
+
+
+
+
 
 .TimeTable-Container th:nth-of-type(1)
 {
@@ -321,6 +332,8 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     background-color: white;
     border-radius:7px;
     position: fixed;
@@ -329,6 +342,9 @@
     width:30vw;
     z-index:100;
 }    
+
+
+
 
 .asking-container>h3
 {    
@@ -340,8 +356,10 @@
 {
     display:flex;
     gap:1rem;
-    padding:1rem 1rem;
+    padding:1rem;
 }    
+
+
 
 .btn-asking>button
 {
@@ -357,19 +375,21 @@
     gap:2vw;
 }    
 
-.Filter>div
-{
 
+.Filter>div
+{    
     display: flex;
     align-items:center;
     gap:7px;
-}    
+}
+
 
 .Filter__Select
 {
     font-size:1.2rem;
     font-weight:bold;    
-}    
+}
+
 
 .Filter__Select>select
 {
@@ -383,19 +403,13 @@
 }    
 
 
-.l1
-{
-    font-size:1rem;
-}    
-
-
 .Filter__Search-Course>input
 {
     width:12vw;
     padding:10px 0 10px 12px;
+    font-size:14px;
     border-radius:20px;
     outline: none;
-    font-size:14px;
 }    
 
 .btn-filter
@@ -409,3 +423,370 @@
     background-color:rgb(16, 16, 93);
 }    
 
+@media screen and (max-width:1400px)
+{
+    .Section-selector
+    {
+        gap:4px;
+        left:2vw;
+    }
+    
+    .Section-container table,
+    .Section-container th,
+    .Section-container td
+    {
+        padding:15px 9px;
+    }
+    
+    .Section-container th
+    {
+        font-size:15px;
+    }
+    
+    .Section-container td
+    {
+        font-size:14px;
+    }
+    
+}
+
+@media screen and (max-width:1138px)
+{
+    .Section-container table,
+    .Section-container th,
+    .Section-container td
+    {
+        padding:14px 9px;
+    }
+    
+    .Section-container th
+    {
+        font-size:14px;
+    }
+    
+    .Section-container td
+    {
+        font-size:12px;
+    }
+    
+}
+
+
+@media screen and (max-width:1080px)
+{
+    .Section-container table,
+    .Section-container th,
+    .Section-container td
+    {
+        padding:13px 7px;
+    }
+    
+    .Section-container th
+    {
+        font-size:13px;
+    }
+
+    .Section-container td
+    {
+        font-size:11px;
+    }
+}
+
+@media screen and (max-width:992px)
+{
+    .Section-container>:nth-child(2)
+    {
+        font-size:1.3rem;
+    }
+    
+    .Section-container table,
+    .Section-container th,
+    .Section-container td
+    {
+        padding:12px 6px;
+    }
+    
+    .Section-container th
+    {
+        font-size:12px;
+    }
+    
+    .Section-container td
+    {
+        font-size:10px;
+    }
+}
+
+@media screen and (max-width:890px)
+{
+    .Section-container>:nth-child(2)
+    {
+        font-size:1.2rem;
+    }
+    
+    .Section-container table,
+    .Section-container th,
+    .Section-container td
+    {
+        padding:11px 5px;
+    }
+    
+    .Section-container th
+    {
+        font-size:11px;
+    }
+
+    .Section-container td
+    {
+        font-size:9px;
+    }
+}
+
+@media screen and (max-width:806px)
+{
+    .Section-container>:nth-child(1) h2
+    {
+        font-size:1.3rem;
+    }
+    .Section-container>:nth-child(2)
+    {
+        font-size:1.1rem;
+    }
+    
+    .Section-container table,
+    .Section-container th,
+    .Section-container td
+    {
+        padding:10px 4px;
+    }
+    
+    .Section-container th
+    {
+        font-size:10px;
+    }
+    
+    .Section-container td
+    {
+        font-size:8px;
+    }
+}
+
+@media screen and (max-width:718px)
+{
+    .Section-container>:nth-child(1) h2
+    {
+        font-size:1.2rem;
+    }
+    
+    .Section-container table,
+    .Section-container th,
+    .Section-container td
+    {
+        padding:9px 2px;
+    }
+    .Section-container th
+    {
+        font-size:9px;
+    }
+}
+
+@media screen and (max-width:512px)
+{
+    .Section-container>:nth-child(1) h2
+    {
+        font-size:1rem;
+    }
+    
+    .Section-container>:nth-child(2)
+    {
+        font-size:1rem;
+    }
+    
+    .Section-container table,
+    .Section-container th,
+    .Section-container td
+    {
+        padding:9px 1px;
+    }
+    .Section-container th
+    {
+        font-size:8px;
+    }
+    
+    .Section-container td
+    {
+        font-size:7px;
+    }
+    
+    .Section-btn-container>:nth-child(1),
+    .Section-btn-container>:nth-child(2)
+    {
+        padding:10px;
+        font-size:12px;
+    }
+}
+
+
+@media screen and (max-width:1208px)
+{
+    .Filter
+    {
+       gap:9px;
+       flex-wrap: wrap;
+    }
+    
+    .Filter>div
+    {
+        gap:5px;
+    }
+    
+    .Filter__Select
+    {
+        font-size:12px;
+    }
+    
+    .Filter__Select>select
+    {
+        width:3rem;
+        padding:4px;
+        font-size:10px;
+    }
+    
+    .Filter__Search-Course>input
+    {
+        width:5.5rem;
+        padding:5px 0 5px 10px;
+        font-size:10px;
+    }
+    .btn-filter
+    {
+        padding:4px;
+        width:3rem;
+        font-size:12px;
+    }
+}
+
+@media screen and (max-width:950px)
+{
+    .Headings
+    {
+        font-size:10px;
+    }
+    .Headings>li,
+    .Course-Container__Courses>li
+    {
+        margin-left:1rem;
+    }
+}
+
+@media screen and (max-width:780px)
+{
+    .TimeTable-Container--Position
+    {
+        width:81vw;
+        left:11vw;
+    }
+
+    .TimeTable-Container h2
+    {
+        font-size:1rem;
+    }
+    
+    .TimeTable-Container th
+    {
+        font-size:8px;
+    }
+    
+    .TimeTable-Container th:nth-of-type(1),
+    .TimeTable-Container__day
+    {
+        font-size:10px;
+        padding:8px;
+    }
+    
+    .TimeTable-Container__day__Lecture
+    {
+        font-size:9px;
+        padding:4px 4px 4px 7px;
+        margin:4px;
+    }
+    
+    /*Asking*/
+    .asking-container
+    {
+        width:50vw;
+        left:30vw;
+    }
+    .asking-container>h3
+    {
+        font-size:1rem;
+    } 
+    
+    .btn-asking>button
+    {
+        width:14vw;
+    }
+}
+
+@media screen and (max-width:592px)
+{
+    .Headings>li,
+    .Course-Container__Courses>li
+    {
+        margin-left:0;
+    }
+}
+
+@media screen and (max-width:521px)
+{
+    .Course-Container__Courses
+    {
+        font-size:8px;
+        padding: 10px 0;
+    }
+
+    .Course-Container__Courses:hover
+    {
+        padding:10px 0;
+        font-size:9px;
+    }
+
+    .Course-Container>:nth-child(1)
+    {
+        padding:14px 14px 14px 14px;
+    }
+    
+    .Course-Container h3
+    {
+        font-size:1rem;
+    }
+    .btn-add
+    {
+        padding-left:10px;
+        padding-right:10px;
+        font-size:10px;
+    }
+}
+
+@media screen and (max-width:375px)
+{
+    .Headings
+    {
+        font-size:9px;
+    }
+}
+
+@media screen and (max-width:467px)
+{
+   .btn-view
+   {
+      font-size:8px;
+      padding:4px 7px;
+    }
+
+   .btn-delete
+   {
+     font-size:8px;
+     padding:6px 7px;
+   }
+}
