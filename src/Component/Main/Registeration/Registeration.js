@@ -12,6 +12,9 @@ import {Data} from '../../../Data/Data';
 //Context API
 export const Context=createContext([]);
 
+let Semester="ALL";
+let CourseType="ALL";
+let Search="";
 
 //Registeration form
 const Registeration = () => {
@@ -34,9 +37,6 @@ const Registeration = () => {
   let Select=[];
   
   //Filter Data and Function
-  let Semester="ALL";
-  let CourseType="ALL";
-  let Search="";
 
 //Functions
 
