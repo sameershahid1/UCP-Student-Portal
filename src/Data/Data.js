@@ -10,22 +10,24 @@ export const Data=[
         Sections:[
        //Course Sections list
             {
-                Section:"E1",
-                Status:"Close",
-                Teacher:"Sameer Shahid",
-                Capacity:50,
-                CurrentCapacity:50,
-                Days:[
-                    {
-                      StartTime:"08:00AM",
-                      EndTime:"09:20AM",
-                      Day:"Monday"
-                    },
-                    {
-                      StartTime:"08:00AM",
-                      EndTime:"09:20AM",
-                      Day:"Wednesday"
-                    }
+              Section:"E1",
+              Status:"Open",
+              Teacher:"Sameer Shahid",
+              Capacity:50,
+              CurrentCapacity:4,
+              Days:[
+                  {
+                    StartTime:"08:00AM",
+                    EndTime:"09:20AM",
+                    Day:"MONDAY",
+                    Place:"A001"
+                  },
+                  {
+                    StartTime:"08:00AM",
+                    EndTime:"09:20AM",
+                    Day:"WEDNESDAY",
+                    Place:"A001"
+                  }
                 ]
             },
             {
@@ -36,14 +38,16 @@ export const Data=[
                 CurrentCapacity:30,
                 Days:[
                     {
-                      StartTime:"10:00AM",
-                      EndTime:"11:20AM",
-                      Day:"Tuesday"
+                      StartTime:"09:30AM",
+                      EndTime:"10:50AM",
+                      Day:"TUESDAY",
+                      Place:"A002"
                     },
                     {
                       StartTime:"08:00AM",
                       EndTime:"09:20AM",
-                      Day:"Friday"
+                      Day:"FRIDAY",
+                      Place:"A003"
                     }
                 ]
             },
@@ -57,12 +61,14 @@ export const Data=[
                     {
                       StartTime:"09:30AM",
                       EndTime:"10:50AM",
-                      Day:"Monday"
+                      Day:"MONDAY",
+                      Place:"A003"
                     },
                     {
                       StartTime:"08:00AM",
                       EndTime:"09:20AM",
-                      Day:"Tuesday"
+                      Day:"TUESDAY",
+                      Place:"A101"
                     }
                 ]
             },            
@@ -87,12 +93,14 @@ export const Data=[
                   {
                     StartTime:"08:00AM",
                     EndTime:"09:20AM",
-                    Day:"Monday"
+                    Day:"MONDAY",
+                    Place:"A011"
                   },
                   {
                     StartTime:"08:00AM",
                     EndTime:"09:20AM",
-                    Day:"Wednesday"
+                    Day:"WEDNESDAY",
+                    Place:"A009"
                   }
               ]
           },
@@ -104,14 +112,16 @@ export const Data=[
               CurrentCapacity:30,
               Days:[
                   {
-                    StartTime:"10:00AM",
-                    EndTime:"11:20AM",
-                    Day:"Tuesday"
+                    StartTime:"08:00AM",
+                    EndTime:"09:20AM",
+                    Day:"TUESDAY",
+                    Place:"A001"
                   },
                   {
                     StartTime:"08:00AM",
                     EndTime:"09:20AM",
-                    Day:"Friday"
+                    Day:"FRIDAY",
+                    Place:"A001"
                   }
               ]
           },
@@ -125,12 +135,14 @@ export const Data=[
                   {
                     StartTime:"09:30AM",
                     EndTime:"10:50AM",
-                    Day:"Monday"
+                    Day:"MONDAY",
+                    Place:"A201"
                   },
                   {
                     StartTime:"08:00AM",
                     EndTime:"09:20AM",
-                    Day:"Tuesday"
+                    Day:"TUESDAY",
+                    Place:"A204"
                   }
               ]
           },            
@@ -155,12 +167,14 @@ export const Data=[
                 {
                   StartTime:"08:00AM",
                   EndTime:"09:20AM",
-                  Day:"Monday"
+                  Day:"MONDAY",
+                  Place:"A204"
                 },
                 {
                   StartTime:"08:00AM",
                   EndTime:"09:20AM",
-                  Day:"Wednesday"
+                  Day:"WEDNESDAY",
+                  Place:"A122"
                 }
             ]
         },
@@ -174,12 +188,12 @@ export const Data=[
                 {
                   StartTime:"10:00AM",
                   EndTime:"11:20AM",
-                  Day:"Tuesday"
+                  Day:"TUESDAY"
                 },
                 {
                   StartTime:"08:00AM",
                   EndTime:"09:20AM",
-                  Day:"Friday"
+                  Day:"FRIDAY"
                 }
             ]
         },
@@ -193,12 +207,12 @@ export const Data=[
               {
                 StartTime:"09:30AM",
                 EndTime:"10:50AM",
-                Day:"Monday"
+                Day:"MONDAY"
               },
               {
                 StartTime:"08:00AM",
                 EndTime:"09:20AM",
-                Day:"Tuesday"
+                Day:"TUESDAY"
               }
           ]
         },            
@@ -223,12 +237,12 @@ export const Data=[
               {
                 StartTime:"08:00AM",
                 EndTime:"09:20AM",
-                Day:"Monday"
+                Day:"MONDAY"
               },
               {
                 StartTime:"08:00AM",
                 EndTime:"09:20AM",
-                Day:"Wednesday"
+                Day:"WEDNESDAY"
               }
           ]
       },
@@ -242,12 +256,12 @@ export const Data=[
               {
                 StartTime:"10:00AM",
                 EndTime:"11:20AM",
-                Day:"Tuesday"
+                Day:"TUESDAY"
               },
               {
                 StartTime:"08:00AM",
                 EndTime:"09:20AM",
-                Day:"Friday"
+                Day:"FRIDAY"
               }
           ]
       },
@@ -261,12 +275,12 @@ export const Data=[
               {
                 StartTime:"09:30AM",
                 EndTime:"10:50AM",
-                Day:"Monday"
+                Day:"MONDAY"
               },
               {
                 StartTime:"08:00AM",
                 EndTime:"09:20AM",
-                Day:"Tuesday"
+                Day:"TUESDAY"
               }
           ]
       },            
@@ -291,12 +305,12 @@ export const Data=[
               {
                 StartTime:"08:00AM",
                 EndTime:"09:20AM",
-                Day:"Monday"
+                Day:"MONDAY"
               },
               {
                 StartTime:"08:00AM",
                 EndTime:"09:20AM",
-                Day:"Wednesday"
+                Day:"WEDNESDAY"
               }
           ]
       },
@@ -310,12 +324,12 @@ export const Data=[
               {
                 StartTime:"10:00AM",
                 EndTime:"11:20AM",
-                Day:"Tuesday"
+                Day:"TUESDAY"
               },
               {
                 StartTime:"08:00AM",
                 EndTime:"09:20AM",
-                Day:"Friday"
+                Day:"FRIDAY"
               }
           ]
       },
@@ -329,12 +343,12 @@ export const Data=[
               {
                 StartTime:"09:30AM",
                 EndTime:"10:50AM",
-                Day:"Monday"
+                Day:"MONDAY"
               },
               {
                 StartTime:"08:00AM",
                 EndTime:"09:20AM",
-                Day:"Tuesday"
+                Day:"TUESDAY"
               }
           ]
       },            
@@ -359,12 +373,12 @@ export const Data=[
              {
                StartTime:"2:00PM",
                EndTime:"3:20PM",
-               Day:"Monday"
+               Day:"MONDAY"
              },
              {
                StartTime:"08:00AM",
                EndTime:"09:20AM",
-               Day:"Friday"
+               Day:"FRIDAY"
              }
          ]
      },
@@ -378,12 +392,12 @@ export const Data=[
              {
                StartTime:"10:00AM",
                EndTime:"11:20AM",
-               Day:"Tuesday"
+               Day:"TUESDAY"
              },
              {
                StartTime:"08:00AM",
                EndTime:"09:20AM",
-               Day:"Friday"
+               Day:"FRIDAY"
              }
          ]
      },
@@ -397,12 +411,12 @@ export const Data=[
              {
                StartTime:"11:00AM",
                EndTime:"12:20PM",
-               Day:"wednesday"
+               Day:"WEDNESDAY"
              },
              {
                StartTime:"08:00AM",
                EndTime:"09:20AM",
-               Day:"thursday"
+               Day:"THURSDAY"
              }
          ]
      },
@@ -416,12 +430,12 @@ export const Data=[
              {
                StartTime:"2:00PM",
                EndTime:"3:20PM",
-               Day:"Monday"
+               Day:"MONDAY"
              },
              {
                StartTime:"08:00AM",
                EndTime:"09:20AM",
-               Day:"Friday"
+               Day:"FRIDAY"
              }
          ]
      },
@@ -435,12 +449,12 @@ export const Data=[
              {
                StartTime:"10:00AM",
                EndTime:"11:20AM",
-               Day:"Tuesday"
+               Day:"TUESDAY"
              },
              {
                StartTime:"08:00AM",
                EndTime:"09:20AM",
-               Day:"Friday"
+               Day:"FRIDAY"
              }
          ]
      },
@@ -454,12 +468,12 @@ export const Data=[
              {
                StartTime:"11:00AM",
                EndTime:"12:20PM",
-               Day:"wednesday"
+               Day:"WEDNESDAY"
              },
              {
                StartTime:"08:00AM",
                EndTime:"09:20AM",
-               Day:"thursday"
+               Day:"THURSDAY"
              }
          ]
      }            

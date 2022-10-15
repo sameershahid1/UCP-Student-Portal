@@ -1,8 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,createContext} from 'react'
 import "./Registeration.css";
 import Sections from './Sections';
 import AskingForDeletion from './AskingForDeletion';
 import {Data} from '../../../Data/Data';
+import TimeTable from './TimeTable';
+
+export const Context=createContext([]);
 
 
 const Registeration = () => {
@@ -13,7 +16,10 @@ const Registeration = () => {
   const [SelectedList,setSelectedList]=useState([]);
   const [AllList,setAllList]=useState(Data);
   const [DeletedCourse,setDeltedCourse]=useState({});
-  
+  const [TempTimeTable,setTempTimeTable]=useState(false);
+  const [ViewSection,setViewSection]=useState(false);
+
+
   //List
   let Select=[];
   
@@ -23,14 +29,20 @@ const Registeration = () => {
   let Search="";
 
 //Functions
+
+//setting the Semester value
 const HandleSemester=(e)=>
 {
   Semester=e.currentTarget.value;
 };
+
+//setting the CourseType value
 const HandleCourseType=(e)=>
 {
   CourseType=e.currentTarget.value;
 };
+
+//setting the Search value
 const HandleSearch=(e)=>
 {
   Search=e.currentTarget.value;
@@ -98,7 +110,6 @@ const Filter=()=>
          }
       });
     }
-    setAllList(Temp.map(x=>x));
   }
   else
   {
@@ -106,10 +117,9 @@ const Filter=()=>
     Temp[0].CourseType===CourseType?
     Temp[0]:[]
     :[];
-    setAllList(Temp.map(x=>x));
-  }
-      
-    }
+  }  
+  setAllList(Temp.map(x=>x));
+}
     
     
 //This is Funciton is used to Add the Course in the Selective Courses
@@ -127,7 +137,7 @@ const Adding=(Selected={})=>
      setAllList(
       AllList.filter((course)=>{
         if(course.CourseCode!==Selected.CourseCode&&course.CourseTitle!==Selected.CourseTitle)
-        { 
+        {
            return course;
         }
       })
@@ -141,7 +151,11 @@ const Adding=(Selected={})=>
 const Allowing=(Delete)=>{
   if(Delete)
   {
-     Deleter();  
+     Deleter();
+     AllList.forEach((course)=>
+     {
+       SectionClashChecker(course,"Open");
+     });
   }
   setAllow(false)
 }
@@ -181,7 +195,7 @@ const Deleter=()=>
   Section.CurrentCapacity-=1;
   if(Section.Status==="Close")
   {
-   Section.Status="Open";
+    Section.Status="Open";
   }
   
 /*Removing the Selected the Courses from the Data Course*/
@@ -195,7 +209,6 @@ const FilterAllList=(Selected)=>
   let Temp={};
   const alllist=Data.filter(course=>
   {
-
     Temp=Selected.find(Section=>
     {
        if(Section.CourseCode===course.CourseCode&&Section.CourseTitle===course.CourseTitle)
@@ -208,32 +221,66 @@ const FilterAllList=(Selected)=>
     {
        return course;
     }
-
   }
   );
 
   return alllist;
 }
 
+//This Function will Check the selected Course Section timing with the Selected Coruses Section.
+const SectionClashChecker=(Course,value)=>
+{
+    Course.Sections.forEach((section)=>
+    {
+        const Match=SelectedList.find((Selected)=>
+        {
+          for(let i=0;i<section.Days.length;i++)
+          {
+              const FDay=Selected.SelectedSection.Days.find((SDay)=>
+              {
+                 if(section.Days[i].Day===SDay.Day&&section.Days[i].StartTime===SDay.StartTime&&section.Days[i].EndTime===SDay.EndTime)
+                 {
+                   return SDay;
+                 }
+              });
+              if(FDay!==undefined)
+              {
+                return Selected;
+              }
+
+            }
+        });
+
+        if(Match!==undefined)
+        {
+          section.Status=value;
+        }
+    });
+}
+
+
 
 return (
   <div className='Registeration'>
+      {/*Backgournd Color of the Screen*/}
+      {(Allow||Add||TempTimeTable||ViewSection)&&<div className='Registeration__BackgroundColor'></div>}
 
       {/*Asking for Deletion*/}
-      {Allow&&<div className='Registeration__BackgroundColor'></div>}
       {Allow&&<AskingForDeletion Allowing={Allowing}/>}
 
+      <Context.Provider value={SelectedList}>
+        {/*Section selection page*/}
+        {(Add||ViewSection)&&<Sections Course={Course} setViewSection={setViewSection} ViewSection={ViewSection} Adding={Adding}/>}
 
-      {/*Section selection page*/}
-      {Add&&<div className='Registeration__BackgroundColor'></div>}
-      {Add&&<Sections Course={Course} Adding={Adding}/>}
-
+        {/*Student TimeTable*/}
+        {TempTimeTable&&<TimeTable isTemp={true} setTempTimeTable={setTempTimeTable}/>}
+      </Context.Provider>
 
       {/*Selected Courses Section*/}
       <section className='Course-Container'>
            <div>
               <h3>Registered Courses ({SelectedList.length}/5)</h3>
-              <button className="btn">View TimeTable</button>
+              <button onClick={()=>{setTempTimeTable(true)}} className="btn">View TimeTable</button>
            </div>
            <ul className='Headings'>
               <li>No#</li>
@@ -242,20 +289,26 @@ return (
               <li>Section</li>
               <li>Capacity</li>
               <li>Action</li>
+              <li>View Section</li>
            </ul>
            <div>
             {
               SelectedList.length>0&&SelectedList.map((section,index)=>(
-               <ul className='Course-Container__Courses'>
+               <ul key={index+1} className='Course-Container__Courses'>
                    <li>{index+1}</li>
                    <li>{section.CourseCode}</li>
                    <li>{section.CourseTitle}</li>
                    <li>{section.SelectedSection.Section}</li>
                    <li>{section.SelectedSection.CurrentCapacity}/{section.SelectedSection.Capacity}</li>
-                   <li><button onClick={()=>{ 
-                    setDeltedCourse(section);
-                    setAllow(true);}}
-                   className='btn-delete btn'>-Delete</button></li>
+                   <li>
+                       <button 
+                        onClick={()=>{
+                            setDeltedCourse(section);
+                            setAllow(true);
+                            }}
+                        className='btn-delete btn'>-Delete</button>
+                   </li>
+                   <li><button onClick={()=>{setViewSection(true);}} className='btn'>View Section</button></li>
                </ul>
                ))
             }
@@ -267,7 +320,7 @@ return (
       <section className='Course-Container'>
  
         {/*Header of the All Courses*/}
-         <div>         
+         <div>
              <h3>Registered Courses (Limited 5)</h3>
              <div className='Filter'>
 
@@ -317,27 +370,29 @@ return (
          <div>
           {
             AllList.length>0&&AllList.map((course)=>(
-            course.Add===true&&<ul key={course.id} className='Course-Container__Courses'>
-              <li>{course.Semester}</li>
-              <li>{course.CourseCode}</li>
-              <li>{course.CourseTitle}</li>
-              <li></li>
-              <li></li>
-              <li>
-                <button className='btn-add btn' 
-                  onClick={()=>{
-                  if(SelectedList.length<5)
-                  {
-                     setCourse(course);
-                     Adding();
-                  }
-                  else
-                  {
-                    setAdd(true);
-                  }
-                  }}
-                >+Add</button>
-              </li>
+            course.Add===true&&
+            <ul key={course.id} className='Course-Container__Courses'>
+               <li>{course.Semester}</li>
+               <li>{course.CourseCode}</li>
+               <li>{course.CourseTitle}</li>
+               <li></li>
+               <li></li>
+               <li>
+                 <button className='btn-add btn' 
+                   onClick={()=>{
+                   if(SelectedList.length<5)
+                   {
+                      SectionClashChecker(course,"Clash");
+                      setCourse(course);
+                      Adding();
+                   }
+                   else
+                   {
+                     setAdd(true);
+                   }
+                   }}
+                 >+Add</button>
+               </li>
             </ul>))
           }
          </div>

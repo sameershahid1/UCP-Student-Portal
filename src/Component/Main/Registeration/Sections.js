@@ -1,38 +1,42 @@
 import React,{useState} from 'react'
 import './Registeration.css';
 import {IoIosClose} from 'react-icons/io'
+import TimeTable from './TimeTable';
 
-
-const Sections = ({Course,Adding}) => {
+const Sections = ({Course,Adding,ViewSection,setViewSection}) => {
 //Selected Section
-const Select={
-      id:0,
-      Semester:0,
-      CourseCode:"",
-      CourseTitle:"",
-      SelectedSection:{
-      Section:"",
-      Status:"",
-      Teacher:"",
-      Capacity:0,
-      CurrentCapacity:0,
-      Days:0
-    }
-  };
+const [Select,useSelect]=useState({
+                                   id:0,
+                                   Semester:0,
+                                   CourseCode:"",
+                                   CourseTitle:"",
+                                   SelectedSection:{
+                                   Section:"",
+                                   Status:"",
+                                   Teacher:"",
+                                   Capacity:0,
+                                   CurrentCapacity:0,
+                                   Days:[]}
+                                 }
+                                );
 
 
 //Selecting the Course Section
-const Selected=(section)=>{    
-      Select.id=Course.id;
-      Select.Semester=Course.Semester;
-      Select.CourseCode=Course.CourseCode;
-      Select.CourseTitle=Course.CourseTitle;
-      Select.SelectedSection.Section=section.Section;
-      Select.SelectedSection.Status=section.Status;
-      Select.SelectedSection.Teacher=section.Teacher;
-      Select.SelectedSection.Capacity=section.Capacity;
-      Select.SelectedSection.CurrentCapacity=section.CurrentCapacity;
-      Select.SelectedSection.Days=section.Days;
+const Selected=(section)=>{
+    useSelect({    
+                id:Course.id,
+                Semester:Course.Semester,
+                CourseCode:Course.CourseCode,
+                CourseTitle:Course.CourseTitle,
+                SelectedSection:{
+                                  Section:section.Section,
+                                  Status:section.Status,
+                                  Teacher:section.Teacher,
+                                  Capacity:section.Capacity,
+                                  CurrentCapacity:section.CurrentCapacity,
+                                  Days:section.Days
+                                }
+             })
 }
 
 //Submiting the Section
@@ -65,14 +69,14 @@ const Submit=()=>{
 
 return (
     <div className='Section-selector'>
-      <section className='Section-container'>
+      <section className={`Section-container ${ViewSection&&"Section-container--Position"}`}>
 
          {/*Header List*/}
          <div>
             <h2>Add New Course</h2>
-            <span onClick={Adding}><IoIosClose/></span>
+            <span onClick={()=>{ViewSection?setViewSection(false):Adding();}}><IoIosClose/></span>
          </div>
-         <span>Course Section</span>
+           <span>Course Section</span>
          <div>
 
          {/*Course Section List*/}
@@ -88,23 +92,18 @@ return (
                 </tr>
             </thead>
             <tbody>
-              {Course.Sections.map((section)=>(
-                  <tr key={section.Section}>
+              {Course.Sections.map((section,i)=>(
+                  <tr key={i+1}>
                     <td>{section.Teacher}</td>
                     <td>{Course.CourseCode}</td>
                     <td>{section.Section}</td>
                     <td>{section.CurrentCapacity}/{section.Capacity}</td>
                     <td>{section.Status}</td>
                     <td>
-                    { section.Status==="Close"
+                    { section.Status==="Close"||section.Status==="Clash"
                       ?<input name='select' type={"radio"} disabled/>
-                      :<input 
-                        onClick={()=>{
-                        Selected(section);
-                        }}
-                        name='select' type={"radio"}
-                        />
-                    } 
+                      :<input onClick={()=>{Selected(section);}} name='select' type={"radio"}/>
+                    }
                     </td>
                   </tr>
               ))}
@@ -113,15 +112,14 @@ return (
          </div>
 
          {/*Buttons*/}
-         <div className='Section-btn-container'>
-          <button onClick={Submit} className='btn'>Submit</button>
-          <button onClick={(e)=>{Adding();}} className='btn'>Cancel</button>
-         </div>
-
+         {!ViewSection&&
+           <div className='Section-btn-container'>
+             <button onClick={Submit} className='btn'>Submit</button>
+             <button onClick={()=>{Adding();}} className='btn'>Cancel</button>
+           </div>
+         }
       </section>
-      <section className='TimingTable-Container'>
-         
-      </section>
+        {!ViewSection&&<TimeTable Select={Select} isTemp={false}/>}
     </div>
   )
 }
