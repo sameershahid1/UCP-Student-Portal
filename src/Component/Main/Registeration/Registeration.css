@@ -180,7 +180,6 @@
 .Section-container>:nth-child(3)
 {
     overflow-y: scroll;
-    height:40vh;
     max-height:40vh;
 }
 
@@ -226,13 +225,13 @@
 /*Time Table*/
 .TimeTable-Container
 {
-    max-height:59vh;
-    width:48vw;
     display: flex;
     justify-content:flex-start;
     flex-direction:column;
     gap:1rem;
     padding-bottom:1rem;
+    width:48vw;
+    max-height:59rem;
 }
 
 
@@ -421,7 +420,7 @@
 .btn-filter:hover
 {
     background-color:rgb(16, 16, 93);
-}    
+}
 
 @media screen and (max-width:1400px)
 {
